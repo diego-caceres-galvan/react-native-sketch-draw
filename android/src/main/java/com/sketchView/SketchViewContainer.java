@@ -47,7 +47,7 @@ public class SketchViewContainer extends LinearLayout {
 
         File imgFile = new  File(localFilePath);
         BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-        //bitmapOptions.outWidth = sketchView.getWidth();
+        bitmapOptions.outWidth = sketchView.getWidth();
         //Bitmap bitmap = BitmapFactory.decodeFile(localFilePath, bitmapOptions);
         Bitmap bitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath(),bitmapOptions);
         bitmap = Bitmap.createScaledBitmap(bitmap,sketchView.getWidth(),sketchView.getHeight(),true);
