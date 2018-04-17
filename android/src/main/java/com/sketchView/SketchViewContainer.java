@@ -61,7 +61,7 @@ public class SketchViewContainer extends LinearLayout {
         bitmapOptions.outWidth = sketchView.getWidth();
         Bitmap bitmap = BitmapFactory.decodeFile(localFilePath, bitmapOptions);
         if(bitmap != null) {
-            sketchView.setViewImage(bitmap);
+            sketchView.setViewImage(bitmap, localFilePath);
             return true;
         }
         return false;

@@ -2,6 +2,7 @@ package com.sketchView;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
@@ -23,7 +24,7 @@ public class SketchView extends View {
     SketchTool eraseTool;
 
     Bitmap incrementalImage;
-    Bitmap originalImage;
+    String originalImagePath;
 
     public SketchView(Context context) {
         super(context);
@@ -58,7 +59,12 @@ public class SketchView extends View {
 
     public void setViewImage(Bitmap bitmap) {
         incrementalImage = bitmap;
-        originalImage = bitmap;
+        invalidate();
+    }
+
+    public void setViewImage(Bitmap bitmap, String localFilePath) {
+        incrementalImage = bitmap;
+        originalImagePath = localFilePath;
         invalidate();
     }
 
@@ -71,12 +77,18 @@ public class SketchView extends View {
 
     public void clear() {
 
-        if(originalImage != null) {
-            incrementalImage = originalImage;
+        if(originalImagePath != null && originalImagePath.length() > 0) {
+            BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
+            bitmapOptions.outWidth = this.getWidth();
+            Bitmap bitmap = BitmapFactory.decodeFile(originalImagePath, bitmapOptions);
+            if(bitmap != null) {
+                incrementalImage = bitmap;
+            }
         }
         else {
             incrementalImage = null;
         }
+
         currentTool.clear();
         invalidate();
     }
