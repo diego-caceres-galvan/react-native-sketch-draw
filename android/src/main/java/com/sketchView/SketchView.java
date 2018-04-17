@@ -23,6 +23,7 @@ public class SketchView extends View {
     SketchTool eraseTool;
 
     Bitmap incrementalImage;
+    Bitmap originalImage;
 
     public SketchView(Context context) {
         super(context);
@@ -57,6 +58,7 @@ public class SketchView extends View {
 
     public void setViewImage(Bitmap bitmap) {
         incrementalImage = bitmap;
+        originalImage = bitmap;
         invalidate();
     }
 
@@ -69,6 +71,9 @@ public class SketchView extends View {
 
     public void clear() {
         incrementalImage = null;
+        if(originalImage !== null) {
+            incrementalImage = originalImage;
+        }
         currentTool.clear();
         invalidate();
     }

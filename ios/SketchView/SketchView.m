@@ -9,6 +9,7 @@
     SketchTool *eraseTool;
     
     UIImage *incrementalImage;
+    UIImage *originalImage;
 }
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -51,6 +52,7 @@
 
 -(void)setViewImage:(UIImage *)image
 {
+    originalImage = image;
     incrementalImage = image;
     [self setNeedsDisplay];
 }
@@ -63,6 +65,9 @@
 -(void) clear
 {
     incrementalImage = nil;
+    if(originalImage !== nil) {
+        incrementalImage = originalImage;
+    }
     [currentTool clear];
     [self setNeedsDisplay];
 }
