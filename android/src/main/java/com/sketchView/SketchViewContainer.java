@@ -18,6 +18,7 @@ import java.util.UUID;
 public class SketchViewContainer extends LinearLayout {
 
     public SketchView sketchView;
+    String localFilePath;
 
     public SketchViewContainer(Context context) {
         super(context);
@@ -28,7 +29,11 @@ public class SketchViewContainer extends LinearLayout {
     public SketchFile saveToLocalCache() throws IOException {
 
         //Bitmap viewBitmap = Bitmap.createBitmap(sketchView.getWidth(), sketchView.getHeight(), Bitmap.Config.ARGB_8888);
-        Bitmap viewBitmap = Bitmap.createBitmap(sketchView.incrementalImage.getWidth(), sketchView.incrementalImage.getHeight(), Bitmap.Config.ARGB_8888);
+        BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
+        bitmapOptions.inScaled = false;
+        Bitmap bitmap = BitmapFactory.decodeFile(localFilePath, bitmapOptions);
+
+        Bitmap viewBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(viewBitmap);
         draw(canvas);
 
@@ -58,8 +63,10 @@ public class SketchViewContainer extends LinearLayout {
 //        }
 //        return false;
 
+        this.localFilePath = localFilePath;
         BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-        bitmapOptions.outWidth = sketchView.getWidth();
+        //bitmapOptions.outWidth = sketchView.getWidth();
+        bitmapOptions.inScaled = false;
         Bitmap bitmap = BitmapFactory.decodeFile(localFilePath, bitmapOptions);
         if(bitmap != null) {
             sketchView.setViewImage(bitmap, localFilePath);

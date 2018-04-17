@@ -24,7 +24,7 @@ public class SketchView extends View {
     SketchTool penTool;
     SketchTool eraseTool;
 
-    public Bitmap incrementalImage;
+    Bitmap incrementalImage;
     String originalImagePath;
 
     public SketchView(Context context) {
@@ -80,7 +80,8 @@ public class SketchView extends View {
 
         if(originalImagePath != null && originalImagePath.length() > 0) {
             BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-            bitmapOptions.outWidth = this.getWidth();
+            //bitmapOptions.outWidth = this.getWidth();
+            bitmapOptions.inScaled = false;
             Bitmap bitmap = BitmapFactory.decodeFile(originalImagePath, bitmapOptions);
             if(bitmap != null) {
                 incrementalImage = bitmap;
