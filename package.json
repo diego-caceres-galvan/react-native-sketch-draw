@@ -13,7 +13,7 @@
   "keywords": [
     "react",
     "react-native",
-    "react-native0.53", 
+    "react-native0.53",
     "ios",
     "android",
     "touch",
@@ -30,7 +30,6 @@
     "url": "https://github.com/VGamezz19/react-native-sketch-draw/issues"
   },
   "homepage": "https://github.com/VGamezz19/react-native-sketch-draw#readme",
-  
   "peerDependencies": {
     "react-native": ">=0.42.0",
     "prop-types": "^15.6.0"
