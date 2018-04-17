@@ -97,7 +97,8 @@ SketchView.propTypes = {
   ...View.propTypes,
   selectedTool: PropTypes.number,
   toolColor: ColorPropType,
-  localSourceImagePath: PropTypes.string
+  localSourceImagePath: PropTypes.string,
+  toolThicknes: PropTypes.number
 };
 
 let RNSketchView = requireNativeComponent('RNSketchView', SketchView, {

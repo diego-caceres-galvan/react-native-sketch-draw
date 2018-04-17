@@ -54,6 +54,11 @@
     incrementalImage = image;
     [self setNeedsDisplay];
 }
+    
+-(void)setToolThickness:(CGFloat)toolThickness
+{
+    [(PenSketchTool *)penTool setToolThickness:toolThickness];
+}
 
 -(void) clear
 {
