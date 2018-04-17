@@ -27,7 +27,8 @@ public class SketchViewContainer extends LinearLayout {
 
     public SketchFile saveToLocalCache() throws IOException {
 
-        Bitmap viewBitmap = Bitmap.createBitmap(sketchView.getWidth(), sketchView.getHeight(), Bitmap.Config.ARGB_8888);
+        //Bitmap viewBitmap = Bitmap.createBitmap(sketchView.getWidth(), sketchView.getHeight(), Bitmap.Config.ARGB_8888);
+        Bitmap viewBitmap = Bitmap.createBitmap(sketchView.incrementalImage.getWidth(), sketchView.incrementalImage.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(viewBitmap);
         draw(canvas);
 

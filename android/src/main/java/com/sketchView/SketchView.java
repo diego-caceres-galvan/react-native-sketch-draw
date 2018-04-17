@@ -24,7 +24,7 @@ public class SketchView extends View {
     SketchTool penTool;
     SketchTool eraseTool;
 
-    Bitmap incrementalImage;
+    public Bitmap incrementalImage;
     String originalImagePath;
 
     public SketchView(Context context) {
