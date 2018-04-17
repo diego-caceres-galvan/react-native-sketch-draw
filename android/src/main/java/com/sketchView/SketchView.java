@@ -51,6 +51,10 @@ public class SketchView extends View {
         ((PenSketchTool) penTool).setToolColor(toolColor);
     }
 
+    public void setToolThickness(float thickness) {
+        ((PenSketchTool) penTool).setToolThickness(thickness);
+    }
+
     public void setViewImage(Bitmap bitmap) {
         incrementalImage = bitmap;
         invalidate();
