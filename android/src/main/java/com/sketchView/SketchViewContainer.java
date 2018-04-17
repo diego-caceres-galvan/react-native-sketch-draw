@@ -28,12 +28,12 @@ public class SketchViewContainer extends LinearLayout {
 
     public SketchFile saveToLocalCache() throws IOException {
 
-        //Bitmap viewBitmap = Bitmap.createBitmap(sketchView.getWidth(), sketchView.getHeight(), Bitmap.Config.ARGB_8888);
-        BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-        bitmapOptions.inScaled = false;
-        Bitmap bitmap = BitmapFactory.decodeFile(localFilePath, bitmapOptions);
-
-        Bitmap viewBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Bitmap viewBitmap = Bitmap.createBitmap(sketchView.getWidth(), sketchView.getHeight(), Bitmap.Config.ARGB_8888);
+//        BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
+//        bitmapOptions.inScaled = false;
+//        Bitmap bitmap = BitmapFactory.decodeFile(localFilePath, bitmapOptions);
+//
+//        Bitmap viewBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(viewBitmap);
         draw(canvas);
 
