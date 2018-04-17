@@ -71,12 +71,12 @@ public class SketchView extends View {
 
     public void clear() {
 
-//        if(originalImage != null) {
-//            incrementalImage = originalImage;
-//        }
-//        else {
-//            incrementalImage = null;
-//        }
+        if(originalImage != null) {
+            incrementalImage = originalImage;
+        }
+        else {
+            incrementalImage = null;
+        }
         currentTool.clear();
         invalidate();
     }
