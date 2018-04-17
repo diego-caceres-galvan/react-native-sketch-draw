@@ -71,7 +71,7 @@ public class SketchView extends View {
 
     public void clear() {
         incrementalImage = null;
-        if(originalImage !== null) {
+        if(originalImage != null) {
             incrementalImage = originalImage;
         }
         currentTool.clear();
