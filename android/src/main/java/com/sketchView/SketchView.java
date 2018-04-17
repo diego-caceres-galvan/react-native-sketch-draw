@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -96,8 +97,12 @@ public class SketchView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if(incrementalImage != null)
-            canvas.drawBitmap(incrementalImage, getLeft(), getTop(), null);
+        if(incrementalImage != null) {
+            //canvas.drawBitmap(incrementalImage, getLeft(), getTop(), null);
+            Rect dstRect = new Rect();
+            canvas.getClipBounds(dstRect);
+            canvas.drawBitmap(incrementalImage, null, dstRect, null);
+        }
         if(currentTool != null)
             currentTool.render(canvas);
     }
