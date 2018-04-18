@@ -3,13 +3,24 @@ declare module "react-native-sketch-draw" {
     selectedTool: number,
     toolColor: string,
     localSourceImagePath: string,
-    toolThickness: number
+    toolThickness: number,
+    constants: Constants
   }
 
   export interface ImageResult {
     localFilePath: string,
     imageWidth: number,
     imageHeight: number
+  }
+
+  export interface Constants {
+    toolType: ToolType
+  }
+
+  export interface ToolType {
+    id: string,
+		name: string,
+		nextId: string
   }
 
   export function onSaveSketch(imageResult: ImageResult): void;
