@@ -1,4 +1,3 @@
-import { ToolType } from './index.d';
 declare module "react-native-sketch-draw" {
   export interface SketchDraw {
     selectedTool: number
