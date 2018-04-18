@@ -1,26 +1,31 @@
+import { ToolType } from './index.d';
 declare module "react-native-sketch-draw" {
   export interface SketchDraw {
-    selectedTool: number,
-    toolColor: string,
-    localSourceImagePath: string,
-    toolThickness: number,
+    selectedTool: number
+    toolColor: string
+    localSourceImagePath: string
+    toolThickness: number
     constants: Constants
   }
 
   export interface ImageResult {
-    localFilePath: string,
-    imageWidth: number,
+    localFilePath: string
+    imageWidth: number
     imageHeight: number
   }
 
   export interface Constants {
-    toolType: ToolType
+    toolType: Tool
+  }
+
+  export interface Tool {
+    pen: ToolType
+    eraser: ToolType
   }
 
   export interface ToolType {
-    id: string,
-		name: string,
-		nextId: string
+    id: string
+		name: string
   }
 
   export function onSaveSketch(imageResult: ImageResult): void;
