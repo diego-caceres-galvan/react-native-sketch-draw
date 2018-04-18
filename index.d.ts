@@ -7,6 +7,7 @@ declare module "react-native-sketch-draw" {
     toolColor: string
     localSourceImagePath: string
     toolThickness: number
+    onSaveSketch(imageResult: ImageResult): void
   }
 
   export interface ImageResult {
@@ -25,15 +26,14 @@ declare module "react-native-sketch-draw" {
   }
 
   export interface ToolType {
-    id: string
+    id: number
 		name: string
   }
 
   export default class SketchDraw extends Component<SketchDrawProps & ViewProperties> {
-    constants: Constants;
-
-    onSaveSketch(imageResult: ImageResult): void;
+    static constants: Constants
+    
   }
 
-  export function onSaveSketch(imageResult: ImageResult): void
+  // export function onSaveSketch(imageResult: ImageResult): void
 }
