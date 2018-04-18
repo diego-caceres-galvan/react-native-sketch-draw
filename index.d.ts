@@ -1,17 +1,13 @@
+import { Component } from 'react';
 import { ViewProperties } from "react-native";
 
 declare module "react-native-sketch-draw" {
-  // export interface SketchDrawProps {
-  //   selectedTool: number
-  //   toolColor: string
-  //   localSourceImagePath: string
-  //   toolThickness: number
-  // }
-  export default class SketchDraw extends Component<SketchDrawProps & ViewProperties> {
-    static Constants: Constants;
-
-    onSaveSketch(imageResult: ImageResult): void;
-}
+  export interface SketchDrawProps {
+    selectedTool: number
+    toolColor: string
+    localSourceImagePath: string
+    toolThickness: number
+  }
 
   export interface ImageResult {
     localFilePath: string
@@ -33,7 +29,11 @@ declare module "react-native-sketch-draw" {
 		name: string
   }
 
-  export function onSaveSketch(imageResult: ImageResult): void
+  export default class SketchDraw extends Component<SketchDrawProps & ViewProperties> {
+    constants: Constants;
 
-  export default SketchDraw;
+    onSaveSketch(imageResult: ImageResult): void;
+  }
+
+  export function onSaveSketch(imageResult: ImageResult): void
 }
