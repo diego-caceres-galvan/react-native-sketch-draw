@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import * as React from 'react'
 import { ViewProperties } from "react-native";
 
 declare module "react-native-sketch-draw" {
@@ -30,9 +30,8 @@ declare module "react-native-sketch-draw" {
 		name: string
   }
 
-  export default class SketchDraw extends Component<SketchDrawProps & ViewProperties> {
+  export default class SketchDraw extends React.Component<SketchDrawProps & ViewProperties> {
     static constants: Constants
-    
   }
 
   // export function onSaveSketch(imageResult: ImageResult): void
