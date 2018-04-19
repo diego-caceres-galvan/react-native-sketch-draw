@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import java.io.File;
@@ -49,6 +50,7 @@ public class SketchViewContainer extends LinearLayout {
 
     }
 
+
     public boolean openSketchFile(String localFilePath) {
 
 //        File imgFile = new  File(localFilePath);
@@ -73,6 +75,16 @@ public class SketchViewContainer extends LinearLayout {
             return true;
         }
         return false;
+    }
+
+    public static Bitmap loadBitmapFromView(View v)
+    {
+        Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_8888);
+
+        Canvas c = new Canvas(b);
+        v.layout(0, 0, v.getLayoutParams().width, v.getLayoutParams().height);
+        v.draw(c);
+        return b;
     }
 
 }
