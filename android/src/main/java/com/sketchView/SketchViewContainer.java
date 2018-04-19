@@ -38,9 +38,11 @@ public class SketchViewContainer extends LinearLayout {
         Canvas canvas = new Canvas(viewBitmap);
         draw(canvas);
 
+        Bitmap viewBitmap2 = Bitmap.createScaledBitmap(viewBitmap, 1000, 3000, false);
+
         File cacheFile = File.createTempFile("sketch_", UUID.randomUUID().toString()+".png");
         FileOutputStream imageOutput = new FileOutputStream(cacheFile);
-        viewBitmap.compress(Bitmap.CompressFormat.PNG, 100, imageOutput);
+        viewBitmap2.compress(Bitmap.CompressFormat.PNG, 100, imageOutput);
 
         SketchFile sketchFile = new SketchFile();
         sketchFile.localFilePath = cacheFile.getAbsolutePath();;

@@ -114,7 +114,7 @@ public class SketchView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Canvas canvas2 = canvas;
+        //Canvas canvas2 = new Canvas(canvas);
         if(incrementalImage != null) {
             //canvas.drawBitmap(incrementalImage, getLeft(), getTop(), null);
             Rect dstRect = new Rect();
@@ -123,11 +123,11 @@ public class SketchView extends View {
 
             //Dado
 
-            canvas2.drawBitmap(originaImage, getLeft(), getTop(), null);
+            //canvas2.drawBitmap(originaImage, getLeft(), getTop(), null);
         }
         if(currentTool != null) {
             currentTool.render(canvas);
-            currentTool.render(canvas2);
+            //currentTool.render(canvas2);
         }
     }
 
