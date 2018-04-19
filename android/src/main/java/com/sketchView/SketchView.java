@@ -83,14 +83,14 @@ public class SketchView extends View {
         return  viewBitmap;
     }
 
-    Bitmap drawBitmapOriginal() {
-        //Dado
-        Bitmap invisibleBitmap = Bitmap.createBitmap(originaImage.getWidth(), originaImage.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas2 = new Canvas(invisibleBitmap);
-        draw(canvas2);
-
-        return  invisibleBitmap;
-    }
+//    Bitmap drawBitmapOriginal() {
+//        //Dado
+//        Bitmap invisibleBitmap = Bitmap.createBitmap(origoriginaImageinaImage.getWidth(), originaImage.getHeight(), Bitmap.Config.ARGB_8888);
+//        Canvas canvas2 = new Canvas(invisibleBitmap);
+//        draw(canvas2);
+//
+//        return  invisibleBitmap;
+//    }
 
     public void clear() {
 
@@ -136,7 +136,7 @@ public class SketchView extends View {
         boolean value = currentTool.onTouch(this, event);
         if(event.getAction() == MotionEvent.ACTION_CANCEL || event.getAction() == MotionEvent.ACTION_UP) {
             setViewImage(drawBitmap());
-            originaImage = drawBitmapOriginal();
+//            originaImage = drawBitmapOriginal();
             currentTool.clear();
         }
         return value;
