@@ -106,3 +106,7 @@ let RNSketchView = requireNativeComponent('RNSketchView', SketchView, {
 });
 
 export default SketchView;
+
+
+//     "react": "16.3.1",
+// "react-native": "^0.53.0"

@@ -99,10 +99,10 @@ public class SketchView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         if(incrementalImage != null) {
-            //canvas.drawBitmap(incrementalImage, getLeft(), getTop(), null);
-            Rect dstRect = new Rect();
-            canvas.getClipBounds(dstRect);
-            canvas.drawBitmap(incrementalImage, null, dstRect, null);
+            canvas.drawBitmap(incrementalImage, getLeft(), getTop(), null);
+//            Rect dstRect = new Rect();
+//            canvas.getClipBounds(dstRect);
+//            canvas.drawBitmap(incrementalImage, null, dstRect, null);
         }
         if(currentTool != null)
             currentTool.render(canvas);
