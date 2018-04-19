@@ -15,6 +15,7 @@
     UIImage *image = [UIImage imageWithContentsOfFile:localFilePath];
     if(image) {
         [self.sketchView setViewImage:image];
+        [self.sketchView setViewImagePath: localFilePath];
         return YES;
     }
     return NO;

@@ -8,6 +8,7 @@
 -(void)setToolType:(SketchToolType) toolType;
 -(void)setToolColor:(NSMutableDictionary *)rgba;
 -(void)setViewImage:(UIImage *)image;
+-(void)setViewImagePath:(NSString *)image;
 -(void)setToolThickness:(CGFloat) toolThickness;
 
 @end

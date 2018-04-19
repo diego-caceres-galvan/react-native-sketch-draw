@@ -9,7 +9,7 @@
     SketchTool *eraseTool;
     
     UIImage *incrementalImage;
-    UIImage *originalImage;
+    NSString *originalImagePath;
 }
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -24,6 +24,7 @@
     [self setMultipleTouchEnabled:NO];
     penTool = [[PenSketchTool alloc] initWithTouchView:self];
     eraseTool = [[EraserSketchTool alloc] initWithTouchView:self];
+    originalImagePath = nil;
     
     [self setToolType:SketchToolTypePen];
     
@@ -52,7 +53,6 @@
 
 -(void)setViewImage:(UIImage *)image
 {
-    originalImage = image;
     incrementalImage = image;
     [self setNeedsDisplay];
 }
@@ -62,11 +62,17 @@
     [(PenSketchTool *)penTool setToolThickness:toolThickness];
 }
 
+-(void)setViewImagePath:(NSString *)image
+{
+    originalImagePath = image;
+}
+
 -(void) clear
 {
     incrementalImage = nil;
-    if(originalImage !== nil) {
-        incrementalImage = originalImage;
+    if(originalImagePath != nil) {
+        UIImage *image = [UIImage imageWithContentsOfFile:originalImagePath];
+        incrementalImage = image;
     }
     [currentTool clear];
     [self setNeedsDisplay];
