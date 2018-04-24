@@ -81,8 +81,9 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
+    UIImage * scaled = [self scaleImage: incrementalImage toSize:rect]
     // Drawing code
-    [incrementalImage drawInRect:rect];
+    [scaled drawInRect:rect];
     [currentTool render];
 }
 
@@ -120,6 +121,30 @@
     [self drawRect:self.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    return image;
+}
+
+- (UIImage *)scaleImage:(UIImage *)originalImage toSize:(CGSize)size
+{
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(NULL, size.width, size.height, 8, 0, colorSpace, kCGImageAlphaPremultipliedLast);
+    CGContextClearRect(context, CGRectMake(0, 0, size.width, size.height));
+    
+    if (originalImage.imageOrientation == UIImageOrientationRight) {
+        CGContextRotateCTM(context, -M_PI_2);
+        CGContextTranslateCTM(context, -size.height, 0.0f);
+        CGContextDrawImage(context, CGRectMake(0, 0, size.height, size.width), originalImage.CGImage);
+    } else {
+        CGContextDrawImage(context, CGRectMake(0, 0, size.width, size.height), originalImage.CGImage);
+    }
+    
+    CGImageRef scaledImage = CGBitmapContextCreateImage(context);
+    CGColorSpaceRelease(colorSpace);
+    CGContextRelease(context);
+    
+    UIImage *image = [UIImage imageWithCGImage:scaledImage];
+    CGImageRelease(scaledImage);
+    
     return image;
 }
 
