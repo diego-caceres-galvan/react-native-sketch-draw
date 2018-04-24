@@ -39,9 +39,9 @@ public class SketchViewContainer extends LinearLayout {
 
         Bitmap viewBitmapOriginalSize = Bitmap.createScaledBitmap(viewBitmap, mOriginalWidth, mOriginalHeight, false);
 
-        File cacheFile = File.createTempFile("kudos_", UUID.randomUUID().toString()+".png");
+        File cacheFile = File.createTempFile("kudos_", UUID.randomUUID().toString()+".jpeg");
         FileOutputStream imageOutput = new FileOutputStream(cacheFile);
-        viewBitmapOriginalSize.compress(Bitmap.CompressFormat.PNG, 100, imageOutput);
+        viewBitmapOriginalSize.compress(Bitmap.CompressFormat.JPEG, 100, imageOutput);
 
         SketchFile sketchFile = new SketchFile();
         sketchFile.localFilePath = cacheFile.getAbsolutePath();;

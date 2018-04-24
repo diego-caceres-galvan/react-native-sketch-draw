@@ -26,13 +26,13 @@
     UIImage *image = [SketchViewContainer imageWithView:self];
     
     NSURL *tempDir = [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
-    NSString *fileName = [NSString stringWithFormat:@"sketch_%@.jpeg", [[NSUUID UUID] UUIDString]];
+    NSString *fileName = [NSString stringWithFormat:@"kudos%@.jpeg", [[NSUUID UUID] UUIDString]];
     NSURL *fileURL = [tempDir URLByAppendingPathComponent:fileName];
     
     NSLog(@"fileURL: %@", [fileURL path]);
     
     //NSData *imageData = UIImagePNGRepresentation(image);
-    NSData *imageData = UIImageJPEGRepresentation(image,  0.7);
+    NSData *imageData = UIImageJPEGRepresentation(image,  1.0);
     [imageData writeToURL:fileURL atomically:YES];
     
     SketchFile *sketchFile = [[SketchFile alloc] init];
