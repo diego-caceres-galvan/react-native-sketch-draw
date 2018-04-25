@@ -81,7 +81,8 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-    UIImage * scaled = [self scaleImage: incrementalImage toSize:rect]
+    CGSize size = CGSizeMake(rect.size.width, rect.size.height);
+    UIImage * scaled = [self scaleImage: incrementalImage toSize:size];
     // Drawing code
     [scaled drawInRect:rect];
     [currentTool render];
